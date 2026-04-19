@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diplomado</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;margin:0}
+.font-heading{font-family:'DM Serif Display',serif}
+*{box-sizing:border-box}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse-glow{0%{box-shadow:0 0 10px rgba(56,189,248,.5),inset 0 0 10px rgba(56,189,248,.1)}50%{box-shadow:0 0 20px rgba(56,189,248,.8),inset 0 0 15px rgba(56,189,248,.2)}100%{box-shadow:0 0 10px rgba(56,189,248,.5),inset 0 0 10px rgba(56,189,248,.1)}}
+.anim-fade{opacity:0}.anim-fade.visible{animation:fadeUp .7s ease forwards}
+.anim-scale{opacity:0}.anim-scale.visible{animation:scaleIn .6s ease forwards}
+.anim-left{opacity:0}.anim-left.visible{animation:slideLeft .7s ease forwards}
+.anim-right{opacity:0}.anim-right.visible{animation:slideRight .7s ease forwards}
+.float-anim{animation:float 3s ease-in-out infinite}
+.stat-card{transform:scale(1);transition:all .3s cubic-bezier(.34,1.56,.64,1)}
+.stat-card:hover{transform:scale(1.05);animation:pulse-glow .6s ease-in-out infinite}
+
+/* Hero gradient */
+.hero-bg{background:linear-gradient(135deg,#0f1729 0%,#1a2744 40%,#2a4066 70%,#1a3355 100%);position:relative;overflow:hidden}
+.hero-bg::before{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(56,189,248,.08) 0%,transparent 60%);pointer-events:none}
+.hero-bg::after{content:'';position:absolute;bottom:-40%;left:-20%;width:70%;height:150%;background:radial-gradient(ellipse,rgba(251,191,36,.06) 0%,transparent 60%);pointer-events:none}
+
+/* Section styling */
+.section-dark{background:#0f1729;color:#e2e8f0}
+.section-light{background:#f8fafc;color:#1e293b}
+.section-accent{background:linear-gradient(135deg,#1e3a5f 0%,#0f1729 100%);color:#e2e8f0}
+
+/* Cards */
+.card-glass{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);border-radius:16px;transition:all .3s ease}
+.card-glass:hover{background:rgba(255,255,255,.1);transform:translateY(-6px);box-shadow:0 24px 48px rgba(56,189,248,.2)}
+.card-light{background:#fff;border:1px solid #e2e8f0;border-radius:16px;transition:all .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.card-light:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.1);border-color:#38bdf8}
+
+/* Accent line */
+.accent-line{width:60px;height:4px;background:linear-gradient(90deg,#38bdf8,#fbbf24);border-radius:4px}
+
+/* Nav */
+.nav-wrap{position:fixed;top:0;left:0;width:100%;z-index:50;transition:all .3s ease}
+.nav-scrolled{background:rgba(15,23,41,.95);backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.nav-link{color:#94a3b8;transition:color .2s ease;font-size:.875rem;font-weight:500}
+.nav-link:hover{color:#38bdf8}
+
+/* Module cards */
+.module-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#0f1729;flex-shrink:0}
+
+/* Timeline */
+.timeline-dot{width:14px;height:14px;border-radius:50%;background:#38bdf8;border:3px solid #1e3a5f;flex-shrink:0}
+
+/* Button */
+.btn-primary{background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#0f1729;font-weight:600;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:all .3s ease;font-size:1rem;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(56,189,248,.3)}
+.btn-outline{border:2px solid #38bdf8;color:#38bdf8;font-weight:600;padding:12px 28px;border-radius:12px;background:transparent;cursor:pointer;transition:all .3s ease;font-size:.95rem}
+.btn-outline:hover{background:rgba(56,189,248,.1)}
+
+/* Mobile menu */
+.mobile-menu{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,41,.98);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#e2e8f0;font-size:1.2rem;font-weight:500;text-decoration:none;transition:color .2s}
+.mobile-menu a:hover{color:#38bdf8}
+
+/* Scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#38bdf8,#fbbf24);z-index:60;transition:width .1s linear}
+
+/* Form */
+input,textarea,select{font-family:'Outfit',sans-serif}
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto" style="background:#0f1729">
+   <!-- Scroll Progress -->
+   <div class="scroll-progress" id="scrollProgress" style="width:0%"></div><!-- Navigation -->
+   <nav class="nav-wrap" id="mainNav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+     <a href="#inicio" class="text-white font-bold text-lg tracking-tight" style="font-family:'DM Serif Display',serif">Diplomado</a>
+     <div class="hidden lg:flex items-center gap-6">
+      <a href="#objetivos" class="nav-link">Objetivos</a> <a href="#plan" class="nav-link">Plan de Estudios</a> <a href="#modulos" class="nav-link">Módulos</a> <a href="#certificacion" class="nav-link">Certificación</a> <a href="#academicos" class="nav-link">Académicos</a> <a href="#requisitos" class="nav-link">Requisitos</a> <a href="#valores" class="nav-link">Valores</a> <a href="#contacto" class="btn-primary" style="padding:10px 22px;font-size:.875rem">Inscríbete</a>
+     </div><button id="menuBtn" class="lg:hidden text-white" aria-label="Menú"><i data-lucide="menu" style="width:28px;height:28px"></i></button>
+    </div>
+   </nav><!-- Mobile Menu -->
+   <div class="mobile-menu" id="mobileMenu">
+    <button id="closeMenu" class="absolute top-6 right-6 text-white" aria-label="Cerrar"><i data-lucide="x" style="width:32px;height:32px"></i></button> <a href="#inicio" onclick="closeMobileMenu()">Inicio</a> <a href="#objetivos" onclick="closeMobileMenu()">Objetivos</a> <a href="#plan" onclick="closeMobileMenu()">Plan de Estudios</a> <a href="#modulos" onclick="closeMobileMenu()">Módulos</a> <a href="#certificacion" onclick="closeMobileMenu()">Certificación</a> <a href="#academicos" onclick="closeMobileMenu()">Académicos</a> <a href="#requisitos" onclick="closeMobileMenu()">Requisitos</a> <a href="#valores" onclick="closeMobileMenu()">Valores</a> <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+   </div><!-- HERO -->
+   <section id="inicio" class="hero-bg" style="min-height:100%;display:flex;align-items:center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-32 lg:py-40 w-full">
+     <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style="background:rgba(56,189,248,.15);color:#38bdf8;border:1px solid rgba(56,189,248,.2)">
+       <i data-lucide="award" style="width:16px;height:16px"></i> <span>Convocatoria Abierta 2026</span>
+      </div>
+      <h1 id="heroTitle" class="font-heading text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 font-bold" style="animation:fadeUp .8s ease forwards;line-height:1.3;letter-spacing:-0.5px">Diplomado en Evaluación Psicológica Forense, con Aplicación a Diversos Contextos Jurídicos</h1>
+      <div class="space-y-3 mb-10" style="animation:fadeUp .8s ease .2s forwards;opacity:0">
+       <p style="color:#94a3b8;font-size:0.95rem"><span style="color:#38bdf8;font-weight:600">Director programa:</span> Mg. Ps. Claudio Roberto de la Fuente Pizarro</p>
+       <p style="color:#94a3b8;font-size:0.95rem"><span style="color:#38bdf8;font-weight:600">Plazo máximo de inscripción:</span> Lunes 01 de junio de 2026</p>
+       <p style="color:#94a3b8;font-size:0.95rem"><span style="color:#38bdf8;font-weight:600">Inicio de clases:</span> Viernes 05 de junio de 2026</p>
+      </div>
+      <div class="flex flex-wrap gap-4" style="animation:fadeUp .8s ease .4s forwards;opacity:0">
+       <a href="#contacto" class="btn-primary"><i data-lucide="arrow-right" style="width:18px;height:18px"></i> Inscríbete ahora</a> <a href="#plan" class="btn-outline">Ver Plan de Estudios</a>
+      </div><!-- Quick stats -->
+      <div class="mt-16" style="animation:fadeUp .8s ease .6s forwards;opacity:0">
+       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+        <div class="stat-card rounded-xl p-4 sm:p-5 text-center cursor-pointer transition-all duration-300" style="background:linear-gradient(135deg,rgba(56,189,248,.25),rgba(56,189,248,.1));border:2px solid rgba(56,189,248,.4);backdrop-filter:blur(10px)">
+         <div class="text-3xl sm:text-4xl font-black text-white mb-1" style="color:#38bdf8">
+          136
+         </div>
+         <div class="font-semibold" style="color:#cbd5e1;font-size:0.85rem">
+          Horas
+         </div>
+         <div class="text-xs mt-0.5" style="color:#64748b">
+          de formación
+         </div>
+        </div>
+        <div class="stat-card rounded-xl p-4 sm:p-5 text-center cursor-pointer transition-all duration-300" style="background:linear-gradient(135deg,rgba(56,189,248,.25),rgba(56,189,248,.1));border:2px solid rgba(56,189,248,.4);backdrop-filter:blur(10px)">
+         <div class="text-3xl sm:text-4xl font-black text-white mb-1" style="color:#38bdf8">
+          5
+         </div>
+         <div class="font-semibold" style="color:#cbd5e1;font-size:0.85rem">
+          Módulos
+         </div>
+         <div class="text-xs mt-0.5" style="color:#64748b">
+          especializados
+         </div>
+        </div>
+        <div class="stat-card rounded-xl p-4 sm:p-5 text-center cursor-pointer transition-all duration-300" style="background:linear-gradient(135deg,rgba(251,191,36,.25),rgba(251,191,36,.1));border:2px solid rgba(251,191,36,.4);backdrop-filter:blur(10px)">
+         <div class="text-3xl sm:text-4xl font-black text-white mb-1" style="color:#fbbf24">
+          15
+         </div>
+         <div class="font-semibold" style="color:#cbd5e1;font-size:0.85rem">
+          Semanas
+         </div>
+         <div class="text-xs mt-0.5" style="color:#64748b">
+          de duración
+         </div>
+        </div>
+        <div class="stat-card rounded-xl p-4 sm:p-5 text-center cursor-pointer transition-all duration-300" style="background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(16,185,129,.1));border:2px solid rgba(16,185,129,.4);backdrop-filter:blur(10px)">
+         <div class="text-xl sm:text-2xl font-black text-white mb-1" style="color:#10b981">
+          Online
+         </div>
+         <div class="font-semibold" style="color:#cbd5e1;font-size:0.85rem">
+          Modalidad
+         </div>
+         <div class="text-xs mt-0.5" style="color:#64748b">
+          100% flexible
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- PRESENTACIÓN -->
+   <section class="section-light py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="anim-left">
+       <div class="accent-line mb-6"></div>
+       <h2 class="font-heading text-3xl sm:text-4xl mb-6" style="color:#0f1729">Valores y Oportunidades</h2>
+       <p class="text-lg leading-relaxed mb-6" style="color:#475569;font-size:1rem">El Diplomado en Evaluación Psicológica Forense presenta características innovadoras, incorporando contenidos teóricos y metodológicos que no abarcan otros programas similares a nivel nacional. Su propuesta diferenciadora radica en la aplicación de la evaluación forense a contextos jurídicos diversos: tribunales laborales, tribunales civiles, juzgados de policía local, y contextos escolares.</p>
+       <p class="leading-relaxed mb-6" style="color:#64748b;font-size:1rem">A diferencia de programas tradicionales enfocados únicamente en tribunales de familia, este diplomado forma profesionales capacitados para confeccionar informes periciales en un amplio ámbito jurídico, adquiriendo herramientas teóricas y metodológicas aplicables directamente a la práctica profesional.</p>
+       <p class="leading-relaxed" style="color:#64748b;font-size:1rem">Un aspecto única en este programa es la inclusión de un módulo sobre la persona del evaluador/a, diseñado para disminuir sesgos y prejuicios personales en la elaboración de informes psicológicos periciales. Te invitamos a formarte con profesionales con gran experiencia en ámbitos jurídico, clínico y escolar.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- OBJETIVOS -->
+   <section id="objetivos" class="section-dark py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Objetivos del Diplomado</h2>
+      <p style="color:#94a3b8;max-width:600px;margin:0 auto">Competencias clave que desarrollarás a lo largo del programa</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.1s">
+       <div class="text-3xl mb-4">
+        ⚖️
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Informe Pericial</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Establecer que es un informe pericial y los alcances del mismo.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.2s">
+       <div class="text-3xl mb-4">
+        🎯
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Implicancias Técnicas y Éticas</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Describir las implicancias técnicas, metodológicas y éticas al presentarse como perito a una audiencia pública.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.3s">
+       <div class="text-3xl mb-4">
+        ❌
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Malas Praxis</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Discriminar las malas praxis que derivan en un peritaje deficiente.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.4s">
+       <div class="text-3xl mb-4">
+        🔬
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Actitud Científica</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Desarrollar una actitud científica, al elaborar un peritaje y al exponerlo en una audiencia pública.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.5s">
+       <div class="text-3xl mb-4">
+        💼
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Competencias Integrales</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Evaluar las competencias técnicas, éticas e interpersonales, para elaborar un peritaje asociado a una pregunta psico jurídica.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- PERFIL DEL EGRESADO -->
+   <section id="perfil" class="section-light py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="anim-left">
+      <div class="accent-line mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl mb-6" style="color:#0f1729">Perfil del Egresado</h2>
+      <p class="text-lg leading-relaxed mb-4" style="color:#475569">El o la egresado/a de este Diplomado será capaz de responder en forma eficaz a los requerimientos de distintos contextos jurídicos, aplicando competencias teóricas, metodológicas y éticas en la confección de un informe pericial.</p>
+      <p class="text-lg leading-relaxed" style="color:#475569">Mostrará constantemente una actitud científica al elaborar un informe pericial, incorporando una mirada crítica y reflexiva sobre su propia labor pericial.</p>
+     </div>
+    </div>
+   </section><!-- RESULTADOS DE APRENDIZAJE -->
+   <section id="resultados" class="section-accent py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Resultados de Aprendizaje</h2>
+      <p style="color:#94a3b8;max-width:600px;margin:0 auto">Lo que podrás hacer al finalizar el programa</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.1s">
+       <div class="text-3xl mb-4">
+        🔍
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Seleccionar</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Elegir instrumentos de recolección validados científicamente que respondan adecuadamente a preguntas psicosociojurídicas.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.2s">
+       <div class="text-3xl mb-4">
+        📋
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Describir</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Detallar metodológicamente los procedimientos utilizados en informes periciales: entrevistas, pruebas psicométricas y revisión de expedientes.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.3s">
+       <div class="text-3xl mb-4">
+        🎯
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Aplicar</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Emplear técnicas de recolección criteriosamente con estándares científicos, evitando sesgos o prejuicios personales.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.4s">
+       <div class="text-3xl mb-4">
+        ⚖️
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Examinar</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Revisar constantemente resultados y conclusiones periciales con actitud ética, aplicando el principio de la beneficencia.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.5s">
+       <div class="text-3xl mb-4">
+        🗣️
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Formular</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Presentar coherente y responsablemente en audiencias públicas resultados periciales aplicando el principio de veracidad.</p>
+      </div>
+      <div class="card-glass p-8 anim-scale" style="animation-delay:.6s">
+       <div class="text-3xl mb-4">
+        🔄
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-3">Reflexionar</h3>
+       <p style="color:#94a3b8;font-size:.95rem">Revisar periódicamente mediante reflexión crítica y formación continua aspectos teóricos, metodológicos y éticos del peritaje.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- PLAN DE ESTUDIOS + DURACIÓN -->
+   <section id="plan" class="section-light py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl mb-4" style="color:#0f1729">Plan de Estudios</h2>
+      <p style="color:#64748b;max-width:600px;margin:0 auto">Un programa integral estructurado en tres componentes esenciales</p>
+     </div><!-- Duration banner -->
+     <div class="anim-scale rounded-2xl p-8 mb-12" style="background:linear-gradient(135deg,#0f1729,#1e3a5f);color:white">
+      <h3 class="font-heading text-2xl mb-8 text-center">Duración del Programa</h3>
+      <div class="flex flex-wrap justify-center gap-8 mb-8">
+       <div>
+        <div class="text-3xl font-bold" style="color:#38bdf8">
+         15
+        </div>
+        <div style="color:#94a3b8;font-size:.9rem">
+         Semanas Lectivas
+        </div>
+       </div>
+       <div>
+        <div class="text-3xl font-bold" style="color:#38bdf8">
+         6
+        </div>
+        <div style="color:#94a3b8;font-size:.9rem">
+         Meses
+        </div>
+       </div>
+       <div>
+        <div class="text-3xl font-bold" style="color:#fbbf24">
+         Online
+        </div>
+        <div style="color:#94a3b8;font-size:.9rem">
+         Modalidad
+        </div>
+       </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 space-y-6">
+       <div>
+        <p style="color:#cbd5e1;font-size:.95rem;margin:0 0 4px 0;font-weight:500">El Programa se desarrollará en modalidad <strong>online</strong> con una duración de <strong>15 semanas lectivas (06 meses)</strong>.</p>
+       </div>
+       <div class="grid sm:grid-cols-2 gap-4">
+        <div class="rounded-lg p-4" style="background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2)">
+         <div style="color:#38bdf8;font-weight:600;font-size:.95rem;margin-bottom:3px">
+          📅 Viernes
+         </div>
+         <p style="color:#cbd5e1;font-size:.9rem;margin:0">3 horas sincrónicas</p>
+        </div>
+        <div class="rounded-lg p-4" style="background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2)">
+         <div style="color:#fbbf24;font-weight:600;font-size:.95rem;margin-bottom:3px">
+          📅 Sábados
+         </div>
+         <p style="color:#cbd5e1;font-size:.9rem;margin:0">4 horas sincrónicas</p>
+        </div>
+       </div>
+       <div class="border-t border-white/10 mt-6 pt-6">
+        <p style="color:#cbd5e1;font-size:.9rem;font-weight:500;margin:0 0 6px 0">Distribución de Horas:</p>
+        <div class="grid sm:grid-cols-3 gap-3">
+         <div class="rounded-lg p-4" style="background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.15)">
+          <div style="color:#38bdf8;font-weight:600;font-size:1.2rem">
+           86 hrs
+          </div>
+          <p style="color:#cbd5e1;font-size:.85rem;margin:4px 0 0 0">Sincrónicas</p>
+         </div>
+         <div class="rounded-lg p-4" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.15)">
+          <div style="color:#fbbf24;font-weight:600;font-size:1.2rem">
+           50 hrs
+          </div>
+          <p style="color:#cbd5e1;font-size:.85rem;margin:4px 0 0 0">Asincrónicas</p>
+         </div>
+         <div class="rounded-lg p-4" style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15)">
+          <div style="color:#10b981;font-weight:600;font-size:1.2rem">
+           136 hrs
+          </div>
+          <p style="color:#cbd5e1;font-size:.85rem;margin:4px 0 0 0">Total</p>
+         </div>
+        </div>
+       </div>
+       <p style="color:#94a3b8;font-size:.9rem;margin:0">* Algunas clases se alternan cada dos semanas para mayor flexibilidad</p>
+      </div>
+     </div><!-- Componentes Esenciales -->
+     <div class="text-center mb-16">
+      <h3 class="font-heading text-2xl mb-8" style="color:#0f1729">Tres Componentes Esenciales</h3>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+       <div class="card-light p-8 anim-scale text-center" style="animation-delay:.1s">
+        <div class="flex justify-center mb-4">
+         <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
+          📚
+         </div>
+        </div>
+        <h4 class="font-semibold text-lg" style="color:#0f1729">Formación Teórica</h4>
+       </div>
+       <div class="card-light p-8 anim-scale text-center" style="animation-delay:.2s">
+        <div class="flex justify-center mb-4">
+         <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
+          🔨
+         </div>
+        </div>
+        <h4 class="font-semibold text-lg" style="color:#0f1729">Pasos Prácticos</h4>
+       </div>
+       <div class="card-light p-8 anim-scale text-center" style="animation-delay:.3s">
+        <div class="flex justify-center mb-4">
+         <div class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
+          💻
+         </div>
+        </div>
+        <h4 class="font-semibold text-lg" style="color:#0f1729">Aprendizaje Asincrónico</h4>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- MÓDULOS -->
+   <section id="modulos" class="section-dark py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Módulos del Programa</h2>
+      <p style="color:#94a3b8;max-width:600px;margin:0 auto">Contenido detallado de cada módulo</p>
+     </div>
+     <div class="space-y-6">
+      <!-- Módulo I -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.1s">
+       <div class="flex items-start justify-between mb-4">
+        <div>
+         <div class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-3" style="background:#e0f2fe;color:#0369a1">
+          MÓDULO I
+         </div>
+         <h3 class="font-semibold text-lg" style="color:#0f1729">¿Qué es un Informe Pericial?</h3>
+        </div>
+        <div class="text-right">
+         <div class="text-sm font-bold" style="color:#38bdf8">
+          31 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Sincrónicas
+         </div>
+         <div class="text-sm font-bold mt-2" style="color:#fbbf24">
+          16 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Asincrónicas
+         </div>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.95rem;line-height:1.6;margin:0">Características del informe pericial, rol del perito, e informes vinculados a materias de competencia en Tribunales de Familia.</p>
+      </div><!-- Módulo II -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.2s">
+       <div class="flex items-start justify-between mb-4">
+        <div>
+         <div class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-3" style="background:#e0f2fe;color:#0369a1">
+          MÓDULO II
+         </div>
+         <h3 class="font-semibold text-lg" style="color:#0f1729">Responsabilidad Civil</h3>
+        </div>
+        <div class="text-right">
+         <div class="text-sm font-bold" style="color:#38bdf8">
+          24 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Sincrónicas
+         </div>
+         <div class="text-sm font-bold mt-2" style="color:#fbbf24">
+          12 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Asincrónicas
+         </div>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.95rem;line-height:1.6;margin:0">El daño en materia civil. Informes vinculados a materias en Tribunales Laborales.</p>
+      </div><!-- Módulo III -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.3s">
+       <div class="flex items-start justify-between mb-4">
+        <div>
+         <div class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-3" style="background:#e0f2fe;color:#0369a1">
+          MÓDULO III
+         </div>
+         <h3 class="font-semibold text-lg" style="color:#0f1729">Criminología y Riesgo</h3>
+        </div>
+        <div class="text-right">
+         <div class="text-sm font-bold" style="color:#38bdf8">
+          17 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Sincrónicas
+         </div>
+         <div class="text-sm font-bold mt-2" style="color:#fbbf24">
+          9 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Asincrónicas
+         </div>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.95rem;line-height:1.6;margin:0">Criminología, valoración del riesgo e informes pre-sentenciales.</p>
+      </div><!-- Módulo IV -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.4s">
+       <div class="flex items-start justify-between mb-4">
+        <div>
+         <div class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-3" style="background:#e0f2fe;color:#0369a1">
+          MÓDULO IV
+         </div>
+         <h3 class="font-semibold text-lg" style="color:#0f1729">Responsabilidad en Educación</h3>
+        </div>
+        <div class="text-right">
+         <div class="text-sm font-bold" style="color:#38bdf8">
+          10 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Sincrónicas
+         </div>
+         <div class="text-sm font-bold mt-2" style="color:#fbbf24">
+          5 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Asincrónicas
+         </div>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.95rem;line-height:1.6;margin:0">Dimensiones de la responsabilidad civil en establecimientos educacionales.</p>
+      </div><!-- Módulo V -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.5s">
+       <div class="flex items-start justify-between mb-4">
+        <div>
+         <div class="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-3" style="background:#e0f2fe;color:#0369a1">
+          MÓDULO V
+         </div>
+         <h3 class="font-semibold text-lg" style="color:#0f1729">Trabajo Personal del Evaluador/a</h3>
+        </div>
+        <div class="text-right">
+         <div class="text-sm font-bold" style="color:#38bdf8">
+          14 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Sincrónicas
+         </div>
+         <div class="text-sm font-bold mt-2" style="color:#fbbf24">
+          7 hrs
+         </div>
+         <div class="text-xs" style="color:#64748b">
+          Asincrónicas
+         </div>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.95rem;line-height:1.6;margin:0">Trabajo personal de la persona del evaluador/a para disminuir sesgos y prejuicios en la práctica pericial.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- REQUISITOS DE CERTIFICACIÓN -->
+   <section id="certificacion" class="section-light py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl mb-4" style="color:#0f1729">Requisitos de Certificación</h2>
+      <p style="color:#64748b;max-width:600px;margin:0 auto">Criterios de evaluación para obtener tu certificado</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+      <!-- Simulación Informe -->
+      <div class="card-light p-8 anim-scale text-center" style="animation-delay:.1s">
+       <div class="flex justify-center mb-6">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
+         <div class="text-4xl">
+          📋
+         </div>
+        </div>
+       </div>
+       <h3 class="font-semibold text-lg mb-4" style="color:#0f1729">Simulación de Informe Pericial</h3>
+       <p style="color:#64748b;font-size:.95rem;margin-bottom:8px">En base a un caso real</p>
+       <div class="text-4xl font-bold" style="color:#0ea5e9">
+        40%
+       </div>
+       <div style="color:#94a3b8;font-size:.85rem;margin-top:4px">
+        de la nota final
+       </div>
+      </div><!-- Análisis Crítico -->
+      <div class="card-light p-8 anim-scale text-center" style="animation-delay:.2s">
+       <div class="flex justify-center mb-6">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
+         <div class="text-4xl">
+          🔍
+         </div>
+        </div>
+       </div>
+       <h3 class="font-semibold text-lg mb-4" style="color:#0f1729">Análisis Crítico de Caso</h3>
+       <p style="color:#64748b;font-size:.95rem;margin-bottom:8px">Reflexión y evaluación</p>
+       <div class="text-4xl font-bold" style="color:#0ea5e9">
+        10%
+       </div>
+       <div style="color:#94a3b8;font-size:.85rem;margin-top:4px">
+        de la nota final
+       </div>
+      </div><!-- Evaluaciones -->
+      <div class="card-light p-8 anim-scale text-center" style="animation-delay:.3s">
+       <div class="flex justify-center mb-6">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
+         <div class="text-4xl">
+          ✅
+         </div>
+        </div>
+       </div>
+       <h3 class="font-semibold text-lg mb-4" style="color:#0f1729">Evaluaciones Continuas</h3>
+       <p style="color:#64748b;font-size:.95rem;margin-bottom:8px">Asignadas por docentes</p>
+       <div class="text-4xl font-bold" style="color:#0ea5e9">
+        50%
+       </div>
+       <div style="color:#94a3b8;font-size:.85rem;margin-top:4px">
+        de la nota final
+       </div>
+      </div>
+     </div><!-- Nota de corte -->
+     <div class="max-w-3xl mx-auto anim-scale" style="animation-delay:.4s">
+      <div class="rounded-2xl p-8 border-2" style="background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(56,189,248,.05));border-color:#38bdf8">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <i data-lucide="alert-circle" style="width:32px;height:32px;color:#38bdf8"></i>
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg mb-2" style="color:#0f1729">Nota de Aprobación</h4>
+         <p style="color:#475569;font-size:.95rem;margin:0">Para obtener tu certificado debes lograr una <strong>calificación mínima de 4.0 en escala de 7.0</strong> en la evaluación final, considerando el promedio ponderado de las tres componentes.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section id="academicos" class="section-light py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl mb-4" style="color:#0f1729">Cuerpo Académico</h2>
+      <p style="color:#64748b;max-width:600px;margin:0 auto">Docentes con amplia experiencia profesional y académica</p>
+     </div>
+     <div class="space-y-6"><!-- Jessica Arenas -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.1s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         ⚖️
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Abogada Sra. Jessica Arenas Paredes</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Derecho de Familia · Reforma Judicial</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciada en Ciencias Jurídicas, Universidad de Chile. Dra. en Derecho, Universidad de Alcalá, Madrid, España. Máster en Investigación Jurídica, Universidad de Alcalá, Madrid, España. Máster en Asesoramiento y Mediación Familiar, Universidad Pontificia Comillas, Madrid, España. <strong>Experiencia:</strong> Jueza de Familia desde los orígenes de la Reforma. Especialista en evaluación pericial en contextos de familia.</p>
+      </div><!-- Sandra Arzola -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.2s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         ⚖️
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Abogada Sra. Sandra Arzola Núñez</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Derecho Laboral · Litigación Oral</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciada en Ciencias Jurídicas, UCN. Magíster en Derecho con mención en Derecho Laboral, PUCV. Diplomada en Litigación Oral Avanzada, UCN. Diplomada en Derecho Colectivo del Trabajo, PUCV. Diplomada en Pedagogía para la Educación Superior, UST. <strong>Experiencia:</strong> 15 años de experiencia en litigación laboral. Jefa de la carrera de Derecho, UST La Serena. Docente de Derecho Laboral I y II. Miembro de la Sociedad Chilena de Derecho del Trabajo y la Seguridad Social.</p>
+      </div><!-- Karen Damke -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.3s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         🧠
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Psicóloga Sra. Karen Damke Calderón</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Violencia Familiar · Terapia Familiar</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciada en Psicología, Universidad de La Serena. Terapeuta Familiar y de Parejas, Instituto Chileno de Terapia Familiar. Master en Prevención y Tratamiento de la Violencia Familiar, Universidad de Barcelona. <strong>Experiencia:</strong> Ex Consejera Técnica del Juzgado de Familia de La Serena desde inicios del funcionamiento de Tribunales de Familia en la Región de Coquimbo.</p>
+      </div><!-- Claudio de la Fuente -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.4s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         🧠
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Psicólogo Sr. Claudio de la Fuente Pizarro</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Director del Programa · Peritaje Forense Integral</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciado en Psicología, Universidad Central. Magíster en Psicología, Universidad Adolfo Ibáñez. Terapeuta Familiar y de Parejas, Instituto de Terapia Familiar de Santiago. Formación en Evaluación del Riesgo de Violencia contra la Pareja: Entrenamiento en SARA V3 2026. Investigador Ley Karin. <strong>Experiencia:</strong> Se desempeñó por 10 años en Unidad Regional de Atención a Víctimas y Testigos, Fiscalía Regional de Coquimbo, desde inicios de la Reforma Procesal Penal. Primer psicólogo a nivel nacional en declarar como perito en un Juicio Oral en lo Penal. Perito de las Ilustrísimas Cortes de La Serena y Copiapó. Ha participado como perito en materias asociadas a Tribunales de Familia, Penal, Laboral y Civil. Docente de pre y post grado.</p>
+      </div><!-- Makarena Fernández -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.5s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         🧠
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Psicóloga Makarena Fernández Lazo</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Competencias Parentales · Peritaje en Daño</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciada y Titulada, Universidad del Mar. Diplomada en Dinámicas Familiares: Hijos, Padres, Pareja y Familia Extensa, Instituto Diálogos. Diplomado en Intervenciones Sistémicas en Infancia y Adolescencia, Instituto Diálogos. Diplomado en Psicodiagnóstico Infanto-Juvenil, Academia Digital de Psicología y Aprendizaje, Santiago. Diplomado en Evaluación Psicológica Forense, con Aplicación a Diversos Contextos Jurídicos, CDLF Consultores, La Serena. Diplomado en Peritaje en Materia de Evaluación en Competencias Parentales, Consultora Equilibrium. <strong>Experiencia:</strong> Psicóloga con experiencia en peritajes de daño y evaluación de competencias parentales. Atención clínica a NNA, especializada en revinculación parental y apoyo en psicoeducación para potenciar las competencias parentales.</p>
+      </div><!-- Catherine Galleguillos -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.6s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         🧠
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Psicóloga Catherine Galleguillos Galleguillos</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Evaluación del Riesgo · Gestión Penitenciaria</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciada en Psicología, Universidad de La Serena. Diplomada en Gestión Pública. Acreditada en Aplicar Escala de Psicopatía de Hard PCL-R. <strong>Experiencia:</strong> Jefa Centro de Reinserción Social de Ovalle, Gendarmería de Chile. Docente en Universidad Bolivariana e Instituto Santo Tomas en Ovalle. Experta en evaluación y gestión de riesgo de reincidencia delictual bajo Modelo de Intervención RNR (Riesgo, Necesidad y Responsividad). Supervisión de Programas de Libertad Vigilada y Libertad Vigilada Intensiva. Profesional de Apoyo y Capacitación en Ley Karin.</p>
+      </div><!-- Daniela Moreno -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.7s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         ⚖️
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Abogada Sra. Daniela Moreno Rojas</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Derecho Procesal · Educación y Superintendencia</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciada en Ciencias Jurídicas, Universidad del Mar. Educadora de Párvulos y Profesora General Básica. Licenciada en Educación. Magíster en Derecho Procesal, Universidad Central. Diplomada en Actualización Jurídica para Jueces y Abogados, Instituto de Estudios Judiciales Hernán Correa de la Cerda y Universidad de La Serena. <strong>Experiencia:</strong> Fue Fiscal Unidad Jurídica, Dirección Regional Superintendencia de Educación, Región de Coquimbo.</p>
+      </div><!-- Gabriel Retuert -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.8s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         🧠
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Psicólogo Sr. Gabriel Retuert Roe</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Psicología Educacional · Convivencia Escolar</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciado en Psicología, Universidad de La Serena. Magíster en Psicología Educacional, Universidad de La Serena. <strong>Experiencia:</strong> Experiencia en contextos escolares y en docencia de pre y post grado en educación superior. Especializado en temas de Convivencia Escolar, Salud Mental Escolar y Desarrollo Socioemocional. Experiencia como asesor técnico en Políticas Públicas de Educación y Transversalidad a nivel municipal.</p>
+      </div><!-- Cristian Rojas -->
+      <div class="card-light p-8 anim-scale" style="animation-delay:.9s">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="text-3xl flex-shrink-0">
+         🧠
+        </div>
+        <div>
+         <h4 class="font-semibold text-lg" style="color:#0f1729">Psicólogo Sr. Cristian Rojas Gutiérrez</h4>
+         <p style="color:#0ea5e9;font-size:.9rem;font-weight:500">Psicología Clínica · Docencia Universitaria</p>
+        </div>
+       </div>
+       <p style="color:#64748b;font-size:.9rem;line-height:1.6;margin:0"><strong>Formación académica:</strong> Licenciado en Psicología, Universidad de La Serena. Magíster en Docencia en Educación Superior, Universidad Central. Máster en Psicología Infantil y Juvenil, Universidad Europea Miguel de Cervantes, España. Diplomado en Hipnosis Clínica, Universidad de Valparaíso. <strong>Experiencia:</strong> Docente de Pre-grado en instituciones de educación superior.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- REQUISITOS -->
+   <section id="requisitos" class="section-accent py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Requisitos</h2>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Admisión -->
+      <div class="card-glass p-8 anim-left">
+       <div class="flex items-center gap-3 mb-6">
+        <i data-lucide="clipboard-list" style="width:28px;height:28px;color:#38bdf8"></i>
+        <h3 class="text-xl font-semibold text-white">Requisitos de Admisión</h3>
+       </div>
+       <ul class="space-y-4">
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Título de Psicólogo/a, o estar cursando el último año de la carrera de Psicología</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Currículum Vitae</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Copia Simple del Título</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Certificado de alumno/a regular</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Cédula de Identidad</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Certificado de Antecedentes</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Certificado que no lo inhabilita de trabajar con NNA, por haber sido condenado por delitos sexuales</span></li>
+       </ul>
+      </div><!-- Diploma -->
+      <div class="card-glass p-8 anim-right">
+       <div class="flex items-center gap-3 mb-6">
+        <i data-lucide="filter" style="width:28px;height:28px;color:#fbbf24"></i>
+        <h3 class="text-xl font-semibold text-white">Criterios de Selección</h3>
+       </div>
+       <ul class="space-y-4">
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#fbbf24;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Interés y/o motivación por las áreas que abarca el diplomado enviando una carta motivacional</span></li>
+       </ul>
+      </div>
+     </div><!-- Charla Informativa Destacada -->
+     <div class="max-w-4xl mx-auto mt-12 anim-scale" style="animation-delay:.4s">
+      <div class="rounded-2xl p-10 border-2" style="background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(251,191,36,.05));border-color:#fbbf24">
+       <div class="flex items-start gap-4 mb-4">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#fbbf24,#f59e0b)"><i data-lucide="calendar" style="width:28px;height:28px;color:#0f1729"></i>
+        </div>
+        <div>
+         <h3 class="text-2xl font-semibold text-white mb-2">Charla Informativa</h3>
+         <p style="color:#cbd5e1;font-size:.95rem;margin:0">Asiste a nuestra sesión informativa para conocer más detalles del programa y resolver todas tus dudas</p>
+        </div>
+       </div>
+       <div class="grid sm:grid-cols-3 gap-6 mt-8 pt-8 border-t border-white/10">
+        <div class="text-center">
+         <div style="color:#fbbf24;font-size:.9rem;font-weight:600;margin-bottom:4px">
+          📅 FECHA
+         </div>
+         <div style="color:#e2e8f0;font-weight:600;font-size:1.05rem">
+          15 de Mayo 2025
+         </div>
+        </div>
+        <div class="text-center">
+         <div style="color:#fbbf24;font-size:.9rem;font-weight:600;margin-bottom:4px">
+          ⏰ HORA
+         </div>
+         <div style="color:#e2e8f0;font-weight:600;font-size:1.05rem">
+          18:30 hrs
+         </div>
+        </div>
+        <div class="text-center">
+         <div style="color:#fbbf24;font-size:.9rem;font-weight:600;margin-bottom:4px">
+          ⌛ DURACIÓN
+         </div>
+         <div style="color:#e2e8f0;font-weight:600;font-size:1.05rem">
+          1 hora
+         </div>
+        </div>
+       </div>
+      </div><!-- Cupos Disponibles -->
+      <div class="max-w-4xl mx-auto mt-8 anim-scale" style="animation-delay:.5s"><!-- Cupos Disponibles -->
+       <div class="max-w-4xl mx-auto mt-8 anim-scale" style="animation-delay:.5s">
+        <div class="rounded-2xl p-8 border-2" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.05));border-color:#10b981">
+         <h4 class="text-center text-white font-semibold mb-6" style="font-size:1.1rem">Cupos Disponibles</h4>
+         <div class="grid sm:grid-cols-2 gap-6">
+          <div class="text-center rounded-lg p-6" style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2)">
+           <div style="color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:6px">
+            MÍNIMO
+           </div>
+           <div style="color:#e2e8f0;font-size:2.5rem;font-weight:700">
+            15
+           </div>
+           <div style="color:#cbd5e1;font-size:.9rem">
+            Personas
+           </div>
+          </div>
+          <div class="text-center rounded-lg p-6" style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2)">
+           <div style="color:#10b981;font-size:.85rem;font-weight:600;margin-bottom:6px">
+            MÁXIMO
+           </div>
+           <div style="color:#e2e8f0;font-size:2.5rem;font-weight:700">
+            40
+           </div>
+           <div style="color:#cbd5e1;font-size:.9rem">
+            Personas
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- VALORES / INVERSIÓN -->
+   <section id="valores" class="section-light py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl mb-4" style="color:#0f1729">Valores</h2>
+      <p style="color:#64748b;max-width:600px;margin:0 auto">Opciones de inversión diseñadas para ti</p>
+     </div><!-- Plan Principal -->
+     <div class="max-w-4xl mx-auto mb-12 anim-scale">
+      <div class="card-light p-10 border-2" style="border-color:#38bdf8">
+       <div class="flex items-center justify-between mb-6">
+        <h3 class="font-heading text-2xl" style="color:#0f1729">Diplomado Completo</h3>
+        <div class="px-4 py-2 rounded-full text-sm font-bold" style="background:#38bdf8;color:#0f1729">
+         PROGRAMA COMPLETO
+        </div>
+       </div>
+       <div class="space-y-6"><!-- Precio Base -->
+        <div class="border-b border-gray-200 pb-6">
+         <div class="text-sm font-semibold mb-3" style="color:#64748b">
+          PAGO ÚNICO
+         </div>
+         <div class="flex items-baseline gap-2 mb-2"><span class="text-3xl font-bold" style="color:#0f1729">$900.004</span> <span style="color:#94a3b8;font-size:.9rem">CLP</span>
+         </div>
+         <p style="color:#64748b;font-size:.9rem;margin-top:6px">O en <strong>7 cuotas de $128.572</strong> sin interés</p>
+         <p style="color:#0ea5e9;font-size:.85rem;margin-top:6px;font-weight:500">*Matrícula solo aplica al diplomado completo</p>
+        </div><!-- Descuentos -->
+        <div class="space-y-4">
+         <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(16,185,129,.05));border:1px solid rgba(16,185,129,.2)">
+          <div class="flex items-start gap-3">
+           <div class="text-xl flex-shrink-0">
+            🏥
+           </div>
+           <div>
+            <h4 class="font-semibold text-sm mb-1" style="color:#0f1729">Miembros Comunidad Psicológica de Chile</h4>
+            <div class="text-xl font-bold mb-1" style="color:#10b981">
+             $720.006
+            </div>
+            <p style="color:#64748b;font-size:.85rem">Descuento 20% · 7 cuotas de $102.858</p>
+           </div>
+          </div>
+         </div>
+         <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(59,130,246,.05));border:1px solid rgba(59,130,246,.2)">
+          <div class="flex items-start gap-3">
+           <div class="text-xl flex-shrink-0">
+            🎓
+           </div>
+           <div>
+            <h4 class="font-semibold text-sm mb-1" style="color:#0f1729">Estudiantes 5to año &amp; Egresados</h4>
+            <div class="text-xl font-bold mb-1" style="color:#3b82f6">
+             $810.005
+            </div>
+            <p style="color:#64748b;font-size:.85rem">Descuento 10% · 7 cuotas de $115.715</p>
+            <p style="color:#94a3b8;font-size:.8rem;margin-top:4px"><em>Egresados de no más de un año de titulación</em></p>
+           </div>
+          </div>
+         </div>
+        </div>
+        <p style="color:#94a3b8;font-size:.85rem">* Los descuentos no son acumulables</p>
+       </div>
+      </div>
+     </div><!-- Módulos Independientes -->
+     <div class="max-w-4xl mx-auto mb-12 anim-scale" style="animation-delay:.1s">
+      <div class="card-light p-10">
+       <h3 class="font-heading text-2xl mb-8" style="color:#0f1729">Cursa Módulos por Separado</h3>
+       <p style="color:#64748b;font-size:.95rem;margin-bottom:8px">Si prefieres cursar solo algunos módulos sin hacer el diplomado completo, aquí están los precios:</p>
+       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
+         <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
+          MÓDULO 1
+         </div>
+         <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
+          $350.000
+         </div>
+         <p style="color:#64748b;font-size:.85rem">¿Qué es un Informe Pericial?</p>
+        </div>
+        <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
+         <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
+          MÓDULO 2
+         </div>
+         <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
+          $200.000
+         </div>
+         <p style="color:#64748b;font-size:.85rem">Responsabilidad Civil</p>
+        </div>
+        <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
+         <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
+          MÓDULO 3
+         </div>
+         <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
+          $250.000
+         </div>
+         <p style="color:#64748b;font-size:.85rem">Criminología y Riesgo</p>
+        </div>
+        <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
+         <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
+          MÓDULO 4
+         </div>
+         <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
+          $150.000
+         </div>
+         <p style="color:#64748b;font-size:.85rem">Responsabilidad en Educación</p>
+        </div>
+        <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
+         <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
+          MÓDULO 5
+         </div>
+         <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
+          $200.000
+         </div>
+         <p style="color:#64748b;font-size:.85rem">Trabajo Personal del Evaluador/a</p>
+        </div>
+       </div>
+       <p style="color:#94a3b8;font-size:.85rem;margin-top:8px;text-center"><em>Sin matrícula al cursar módulos individuales</em></p>
+      </div>
+     </div><!-- Matrícula Destacada -->
+     <div class="max-w-2xl mx-auto anim-scale" style="animation-delay:.2s">
+      <div class="rounded-2xl p-8 border-2" style="background:linear-gradient(135deg,rgba(251,191,36,.2),rgba(251,191,36,.1));border-color:#fbbf24">
+       <div class="flex items-center gap-3 mb-4"><i data-lucide="alert-circle" style="width:28px;height:28px;color:#fbbf24"></i>
+        <h4 class="font-semibold text-lg" style="color:#0f1729">Matrícula del Diplomado</h4>
+       </div>
+       <div class="text-center">
+        <div class="text-4xl font-bold mb-2" style="color:#0f1729">
+         $60.000
+        </div>
+        <p style="color:#64748b;font-size:.95rem;margin:0 0 8px 0"><strong>Solo aplica si tomas el diplomado completo</strong></p>
+        <p style="color:#94a3b8;font-size:.9rem;margin:0">No se cobra matrícula al cursar módulos por separado</p>
+       </div>
+      </div>
+     </div><!-- CTA -->
+     <div class="text-center anim-scale" style="animation-delay:.2s"><a href="#contacto" class="btn-primary"> <i data-lucide="send" style="width:18px;height:18px"></i> Solicitar más información </a>
+     </div>
+    </div>
+   </section><!-- CONTACTO -->
+   <section id="contacto" class="section-dark py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+     <div class="text-center mb-16 anim-fade">
+      <div class="accent-line mx-auto mb-6"></div>
+      <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Contacto e Inscripciones</h2>
+      <p style="color:#94a3b8;max-width:600px;margin:0 auto">¿Tienes preguntas? Contáctanos y un asesor te atenderá</p>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
+      <!-- CTA Button -->
+      <div class="card-glass p-12 anim-left text-center">
+       <div class="mb-6"><i data-lucide="clipboard-list" style="width:48px;height:48px;color:#38bdf8;margin:0 auto"></i>
+       </div>
+       <h3 class="text-2xl font-semibold text-white mb-4">¿Listo para Inscribirte?</h3>
+       <p style="color:#cbd5e1;font-size:.95rem;margin-bottom:8px">Completa el formulario de inscripción y uno de nuestros asesores te contactará en breve para confirmar tu participación</p><a href="https://forms.gle/FORMULARIO" target="_blank" rel="noopener noreferrer" class="btn-primary w-full justify-center inline-flex mt-6 mb-4"> <i data-lucide="external-link" style="width:18px;height:18px"></i> Ir al Formulario de Inscripción </a>
+       <p style="color:#64748b;font-size:.85rem">*Se abrirá en una nueva ventana</p>
+      </div><!-- Info -->
+      <div class="anim-right space-y-8">
+       <div>
+        <h3 class="text-xl font-semibold text-white mb-6">Información de Contacto</h3>
+        <div class="space-y-5">
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(56,189,248,.15)"><i data-lucide="mail" style="width:20px;height:20px;color:#38bdf8"></i>
+          </div>
+          <div>
+           <div class="text-sm" style="color:#64748b">
+            Email
+           </div>
+           <div id="infoEmail" class="text-white font-medium">
+            diplomado@universidad.edu.mx
+           </div>
+          </div>
+         </div>
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(56,189,248,.15)"><i data-lucide="phone" style="width:20px;height:20px;color:#38bdf8"></i>
+          </div>
+          <div>
+           <div class="text-sm" style="color:#64748b">
+            Teléfono
+           </div>
+           <div id="infoPhone" class="text-white font-medium">
+            +52 555 123 4567
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="card-glass p-6">
+        <div class="flex items-center gap-3 mb-3"><i data-lucide="calendar" style="width:20px;height:20px;color:#fbbf24"></i>
+         <h4 class="font-semibold text-white">Próximo Inicio</h4>
+        </div>
+        <p style="color:#cbd5e1;font-size:.95rem">Viernes 05 de junio de 2026 · Cupo limitado a 40 participantes</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="py-8" style="background:#0a1120;border-top:1px solid rgba(255,255,255,.05)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+     <p style="color:#475569;font-size:.85rem">© 2026 Diplomado en Evaluación Psicológica Forense, con Aplicación a Diversos Contextos Jurídicos · Todos los derechos reservados</p>
+    </div>
+   </footer>
+   <script>
+// Default config
+const defaultConfig = {
+  diploma_title: 'Diplomado en Evaluación Psicológica Forense, con Aplicación a Diversos Contextos Jurídicos',
+  diploma_subtitle: 'Desarrolla competencias especializadas en evaluación psicológica forense con aplicación directa a contextos jurídicos y legales.',
+  contact_email: 'diplomado@universidad.edu.mx',
+  contact_phone: '+52 555 123 4567',
+  background_color: '#0f1729',
+  surface_color: '#f8fafc',
+  text_color: '#e2e8f0',
+  primary_action_color: '#38bdf8',
+  secondary_action_color: '#fbbf24',
+  font_family: 'Outfit',
+  font_size: 16
+};
+
+// Element SDK
+window.elementSdk.init({
+  defaultConfig,
+  async onConfigChange(config) {
+    const c = Object.assign({}, defaultConfig, config);
+    // Title
+    const heroTitle = document.getElementById('heroTitle');
+    if (heroTitle) heroTitle.textContent = c.diploma_title || defaultConfig.diploma_title;
+    // Subtitle
+    const heroSub = document.getElementById('heroSubtitle');
+    if (heroSub) heroSub.textContent = c.diploma_subtitle || defaultConfig.diploma_subtitle;
+    // Contact info
+    const infoEmail = document.getElementById('infoEmail');
+    if (infoEmail) infoEmail.textContent = c.contact_email || defaultConfig.contact_email;
+    const infoPhone = document.getElementById('infoPhone');
+    if (infoPhone) infoPhone.textContent = c.contact_phone || defaultConfig.contact_phone;
+    // Font
+    const font = c.font_family || defaultConfig.font_family;
+    document.body.style.fontFamily = `${font}, Outfit, sans-serif`;
+    // Font size
+    const base = c.font_size || defaultConfig.font_size;
+    document.body.style.fontSize = `${base}px`;
+    // Colors
+    document.querySelectorAll('.btn-primary').forEach(b => { b.style.background = `linear-gradient(135deg,${c.primary_action_color},${c.primary_action_color}dd)`; });
+    document.querySelectorAll('.accent-line').forEach(l => { l.style.background = `linear-gradient(90deg,${c.primary_action_color},${c.secondary_action_color})`; });
+    document.querySelectorAll('.module-num').forEach(n => { n.style.background = `linear-gradient(135deg,${c.primary_action_color},${c.primary_action_color}dd)`; });
+  },
+  mapToCapabilities(config) {
+    const c = Object.assign({}, defaultConfig, config);
+    function mut(key) {
+      return {
+        get: () => c[key] || defaultConfig[key],
+        set: (v) => { c[key] = v; window.elementSdk.setConfig({ [key]: v }); }
+      };
+    }
+    return {
+      recolorables: [mut('background_color'), mut('surface_color'), mut('text_color'), mut('primary_action_color'), mut('secondary_action_color')],
+      borderables: [],
+      fontEditable: mut('font_family'),
+      fontSizeable: mut('font_size')
+    };
+  },
+  mapToEditPanelValues(config) {
+    const c = Object.assign({}, defaultConfig, config);
+    return new Map([
+      ['diploma_title', c.diploma_title || defaultConfig.diploma_title],
+      ['diploma_subtitle', c.diploma_subtitle || defaultConfig.diploma_subtitle],
+      ['contact_email', c.contact_email || defaultConfig.contact_email],
+      ['contact_phone', c.contact_phone || defaultConfig.contact_phone]
+    ]);
+  }
+});
+
+// Scroll animations
+const app = document.getElementById('app');
+function checkAnims() {
+  document.querySelectorAll('.anim-fade,.anim-scale,.anim-left,.anim-right').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) {
+      const delay = el.style.animationDelay || '0s';
+      el.style.animationDelay = delay;
+      el.classList.add('visible');
+    }
+  });
+}
+app.addEventListener('scroll', checkAnims);
+setTimeout(checkAnims, 100);
+
+// Scroll progress
+app.addEventListener('scroll', () => {
+  const scrollTop = app.scrollTop;
+  const scrollHeight = app.scrollHeight - app.clientHeight;
+  const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+  // Nav background
+  document.getElementById('mainNav').classList.toggle('nav-scrolled', scrollTop > 50);
+});
+
+// Mobile menu
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('closeMenu').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+lucide.createIcons();
+</script>
+  </div>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ee911e1c1d43407',t:'MTc3NjU3MTkzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
