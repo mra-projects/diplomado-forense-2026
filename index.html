@@ -6,7 +6,6 @@
   <title>Diplomado</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <script src="/_sdk/element_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
 html{scroll-behavior:smooth}
@@ -80,27 +79,23 @@ input,textarea,select{font-family:'Outfit',sans-serif}
 </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
-  <div id="app" class="w-full h-full overflow-auto" style="background:#0f1729">
-   <!-- Scroll Progress -->
+  <div id="app" class="w-full h-full overflow-auto" style="background:#0f1729"><!-- Scroll Progress -->
    <div class="scroll-progress" id="scrollProgress" style="width:0%"></div><!-- Navigation -->
    <nav class="nav-wrap" id="mainNav">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-     <a href="#inicio" class="text-white font-bold text-lg tracking-tight" style="font-family:'DM Serif Display',serif">Diplomado</a>
-     <div class="hidden lg:flex items-center gap-6">
-      <a href="#objetivos" class="nav-link">Objetivos</a> <a href="#plan" class="nav-link">Plan de Estudios</a> <a href="#modulos" class="nav-link">Módulos</a> <a href="#certificacion" class="nav-link">Certificación</a> <a href="#academicos" class="nav-link">Académicos</a> <a href="#requisitos" class="nav-link">Requisitos</a> <a href="#valores" class="nav-link">Valores</a> <a href="#contacto" class="btn-primary" style="padding:10px 22px;font-size:.875rem">Inscríbete</a>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="#inicio" class="text-white font-bold text-lg tracking-tight" style="font-family:'DM Serif Display',serif">Diplomado</a>
+     <div class="hidden lg:flex items-center gap-6"><a href="#objetivos" class="nav-link">Objetivos</a> <a href="#plan" class="nav-link">Plan de Estudios</a> <a href="#modulos" class="nav-link">Módulos</a> <a href="#certificacion" class="nav-link">Certificación</a> <a href="#academicos" class="nav-link">Académicos</a> <a href="#requisitos" class="nav-link">Requisitos</a> <a href="#valores" class="nav-link">Valores</a> <a href="#contacto" class="btn-primary" style="padding:10px 22px;font-size:.875rem">Inscríbete</a>
      </div><button id="menuBtn" class="lg:hidden text-white" aria-label="Menú"><i data-lucide="menu" style="width:28px;height:28px"></i></button>
     </div>
    </nav><!-- Mobile Menu -->
-   <div class="mobile-menu" id="mobileMenu">
-    <button id="closeMenu" class="absolute top-6 right-6 text-white" aria-label="Cerrar"><i data-lucide="x" style="width:32px;height:32px"></i></button> <a href="#inicio" onclick="closeMobileMenu()">Inicio</a> <a href="#objetivos" onclick="closeMobileMenu()">Objetivos</a> <a href="#plan" onclick="closeMobileMenu()">Plan de Estudios</a> <a href="#modulos" onclick="closeMobileMenu()">Módulos</a> <a href="#certificacion" onclick="closeMobileMenu()">Certificación</a> <a href="#academicos" onclick="closeMobileMenu()">Académicos</a> <a href="#requisitos" onclick="closeMobileMenu()">Requisitos</a> <a href="#valores" onclick="closeMobileMenu()">Valores</a> <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+   <div class="mobile-menu" id="mobileMenu"><button id="closeMenu" class="absolute top-6 right-6 text-white" aria-label="Cerrar"><i data-lucide="x" style="width:32px;height:32px"></i></button> <a href="#inicio" onclick="closeMobileMenu()">Inicio</a> <a href="#objetivos" onclick="closeMobileMenu()">Objetivos</a> <a href="#plan" onclick="closeMobileMenu()">Plan de Estudios</a> <a href="#modulos" onclick="closeMobileMenu()">Módulos</a> <a href="#certificacion" onclick="closeMobileMenu()">Certificación</a> <a href="#academicos" onclick="closeMobileMenu()">Académicos</a> <a href="#requisitos" onclick="closeMobileMenu()">Requisitos</a> <a href="#valores" onclick="closeMobileMenu()">Valores</a> <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
    </div><!-- HERO -->
    <section id="inicio" class="hero-bg" style="min-height:100%;display:flex;align-items:center">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-32 lg:py-40 w-full">
      <div class="max-w-3xl">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style="background:rgba(56,189,248,.15);color:#38bdf8;border:1px solid rgba(56,189,248,.2)">
-       <i data-lucide="award" style="width:16px;height:16px"></i> <span>Convocatoria Abierta 2026</span>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6" style="background:rgba(56,189,248,.15);color:#38bdf8;border:1px solid rgba(56,189,248,.2)"><i data-lucide="award" style="width:16px;height:16px"></i> <span>Convocatoria Abierta 2026</span>
       </div>
       <h1 id="heroTitle" class="font-heading text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6 font-bold" style="animation:fadeUp .8s ease forwards;line-height:1.3;letter-spacing:-0.5px">Diplomado en Evaluación Psicológica Forense, con Aplicación a Diversos Contextos Jurídicos</h1>
       <div class="space-y-3 mb-10" style="animation:fadeUp .8s ease .2s forwards;opacity:0">
@@ -108,8 +103,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
        <p style="color:#94a3b8;font-size:0.95rem"><span style="color:#38bdf8;font-weight:600">Plazo máximo de inscripción:</span> Lunes 01 de junio de 2026</p>
        <p style="color:#94a3b8;font-size:0.95rem"><span style="color:#38bdf8;font-weight:600">Inicio de clases:</span> Viernes 05 de junio de 2026</p>
       </div>
-      <div class="flex flex-wrap gap-4" style="animation:fadeUp .8s ease .4s forwards;opacity:0">
-       <a href="#contacto" class="btn-primary"><i data-lucide="arrow-right" style="width:18px;height:18px"></i> Inscríbete ahora</a> <a href="#plan" class="btn-outline">Ver Plan de Estudios</a>
+      <div class="flex flex-wrap gap-4" style="animation:fadeUp .8s ease .4s forwards;opacity:0"><a href="#contacto" class="btn-primary"><i data-lucide="arrow-right" style="width:18px;height:18px"></i> Inscríbete ahora</a> <a href="#plan" class="btn-outline">Ver Plan de Estudios</a>
       </div><!-- Quick stats -->
       <div class="mt-16" style="animation:fadeUp .8s ease .6s forwards;opacity:0">
        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
@@ -401,8 +395,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
       <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Módulos del Programa</h2>
       <p style="color:#94a3b8;max-width:600px;margin:0 auto">Contenido detallado de cada módulo</p>
      </div>
-     <div class="space-y-6">
-      <!-- Módulo I -->
+     <div class="space-y-6"><!-- Módulo I -->
       <div class="card-light p-8 anim-scale" style="animation-delay:.1s">
        <div class="flex items-start justify-between mb-4">
         <div>
@@ -538,8 +531,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
       <h2 class="font-heading text-3xl sm:text-4xl mb-4" style="color:#0f1729">Requisitos de Certificación</h2>
       <p style="color:#64748b;max-width:600px;margin:0 auto">Criterios de evaluación para obtener tu certificado</p>
      </div>
-     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-      <!-- Simulación Informe -->
+     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12"><!-- Simulación Informe -->
       <div class="card-light p-8 anim-scale text-center" style="animation-delay:.1s">
        <div class="flex justify-center mb-6">
         <div class="w-20 h-20 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">
@@ -595,8 +587,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
      <div class="max-w-3xl mx-auto anim-scale" style="animation-delay:.4s">
       <div class="rounded-2xl p-8 border-2" style="background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(56,189,248,.05));border-color:#38bdf8">
        <div class="flex items-start gap-4">
-        <div class="flex-shrink-0">
-         <i data-lucide="alert-circle" style="width:32px;height:32px;color:#38bdf8"></i>
+        <div class="flex-shrink-0"><i data-lucide="alert-circle" style="width:32px;height:32px;color:#38bdf8"></i>
         </div>
         <div>
          <h4 class="font-semibold text-lg mb-2" style="color:#0f1729">Nota de Aprobación</h4>
@@ -614,7 +605,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
       <h2 class="font-heading text-3xl sm:text-4xl mb-4" style="color:#0f1729">Cuerpo Académico</h2>
       <p style="color:#64748b;max-width:600px;margin:0 auto">Docentes con amplia experiencia profesional y académica</p>
      </div>
-     <div class="space-y-6"><!-- Jessica Arenas -->
+     <div class="space-y-6">
+      <!-- Jessica Arenas -->
       <div class="card-light p-8 anim-scale" style="animation-delay:.1s">
        <div class="flex items-start gap-4 mb-4">
         <div class="text-3xl flex-shrink-0">
@@ -732,11 +724,9 @@ input,textarea,select{font-family:'Outfit',sans-serif}
       <div class="accent-line mx-auto mb-6"></div>
       <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Requisitos</h2>
      </div>
-     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <!-- Admisión -->
+     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"><!-- Admisión -->
       <div class="card-glass p-8 anim-left">
-       <div class="flex items-center gap-3 mb-6">
-        <i data-lucide="clipboard-list" style="width:28px;height:28px;color:#38bdf8"></i>
+       <div class="flex items-center gap-3 mb-6"><i data-lucide="clipboard-list" style="width:28px;height:28px;color:#38bdf8"></i>
         <h3 class="text-xl font-semibold text-white">Requisitos de Admisión</h3>
        </div>
        <ul class="space-y-4">
@@ -750,8 +740,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
        </ul>
       </div><!-- Diploma -->
       <div class="card-glass p-8 anim-right">
-       <div class="flex items-center gap-3 mb-6">
-        <i data-lucide="filter" style="width:28px;height:28px;color:#fbbf24"></i>
+       <div class="flex items-center gap-3 mb-6"><i data-lucide="filter" style="width:28px;height:28px;color:#fbbf24"></i>
         <h3 class="text-xl font-semibold text-white">Criterios de Selección</h3>
        </div>
        <ul class="space-y-4">
@@ -762,7 +751,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
      <div class="max-w-4xl mx-auto mt-12 anim-scale" style="animation-delay:.4s">
       <div class="rounded-2xl p-10 border-2" style="background:linear-gradient(135deg,rgba(251,191,36,.15),rgba(251,191,36,.05));border-color:#fbbf24">
        <div class="flex items-start gap-4 mb-4">
-        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#fbbf24,#f59e0b)"><i data-lucide="calendar" style="width:28px;height:28px;color:#0f1729"></i>
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#fbbf24,#f59e0b)">
+         <i data-lucide="calendar" style="width:28px;height:28px;color:#0f1729"></i>
         </div>
         <div>
          <h3 class="text-2xl font-semibold text-white mb-2">Charla Informativa</h3>
@@ -796,7 +786,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
         </div>
        </div>
       </div><!-- Cupos Disponibles -->
-      <div class="max-w-4xl mx-auto mt-8 anim-scale" style="animation-delay:.5s"><!-- Cupos Disponibles -->
+      <div class="max-w-4xl mx-auto mt-8 anim-scale" style="animation-delay:.5s">
+       <!-- Cupos Disponibles -->
        <div class="max-w-4xl mx-auto mt-8 anim-scale" style="animation-delay:.5s">
         <div class="rounded-2xl p-8 border-2" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.05));border-color:#10b981">
          <h4 class="text-center text-white font-semibold mb-6" style="font-size:1.1rem">Cupos Disponibles</h4>
@@ -845,12 +836,14 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          PROGRAMA COMPLETO
         </div>
        </div>
-       <div class="space-y-6"><!-- Precio Base -->
+       <div class="space-y-6">
+        <!-- Precio Base -->
         <div class="border-b border-gray-200 pb-6">
          <div class="text-sm font-semibold mb-3" style="color:#64748b">
           PAGO ÚNICO
          </div>
-         <div class="flex items-baseline gap-2 mb-2"><span class="text-3xl font-bold" style="color:#0f1729">$900.004</span> <span style="color:#94a3b8;font-size:.9rem">CLP</span>
+         <div class="flex items-baseline gap-2 mb-2">
+          <span class="text-3xl font-bold" style="color:#0f1729">$900.004</span> <span style="color:#94a3b8;font-size:.9rem">CLP</span>
          </div>
          <p style="color:#64748b;font-size:.9rem;margin-top:6px">O en <strong>7 cuotas de $128.572</strong> sin interés</p>
          <p style="color:#0ea5e9;font-size:.85rem;margin-top:6px;font-weight:500">*Matrícula solo aplica al diplomado completo</p>
@@ -946,7 +939,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
      </div><!-- Matrícula Destacada -->
      <div class="max-w-2xl mx-auto anim-scale" style="animation-delay:.2s">
       <div class="rounded-2xl p-8 border-2" style="background:linear-gradient(135deg,rgba(251,191,36,.2),rgba(251,191,36,.1));border-color:#fbbf24">
-       <div class="flex items-center gap-3 mb-4"><i data-lucide="alert-circle" style="width:28px;height:28px;color:#fbbf24"></i>
+       <div class="flex items-center gap-3 mb-4">
+        <i data-lucide="alert-circle" style="width:28px;height:28px;color:#fbbf24"></i>
         <h4 class="font-semibold text-lg" style="color:#0f1729">Matrícula del Diplomado</h4>
        </div>
        <div class="text-center">
@@ -958,7 +952,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
        </div>
       </div>
      </div><!-- CTA -->
-     <div class="text-center anim-scale" style="animation-delay:.2s"><a href="#contacto" class="btn-primary"> <i data-lucide="send" style="width:18px;height:18px"></i> Solicitar más información </a>
+     <div class="text-center anim-scale" style="animation-delay:.2s">
+      <a href="#contacto" class="btn-primary"> <i data-lucide="send" style="width:18px;height:18px"></i> Solicitar más información </a>
      </div>
     </div>
    </section><!-- CONTACTO -->
@@ -969,10 +964,10 @@ input,textarea,select{font-family:'Outfit',sans-serif}
       <h2 class="font-heading text-3xl sm:text-4xl text-white mb-4">Contacto e Inscripciones</h2>
       <p style="color:#94a3b8;max-width:600px;margin:0 auto">¿Tienes preguntas? Contáctanos y un asesor te atenderá</p>
      </div>
-     <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
-      <!-- CTA Button -->
+     <div class="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-center"><!-- CTA Button -->
       <div class="card-glass p-12 anim-left text-center">
-       <div class="mb-6"><i data-lucide="clipboard-list" style="width:48px;height:48px;color:#38bdf8;margin:0 auto"></i>
+       <div class="mb-6">
+        <i data-lucide="clipboard-list" style="width:48px;height:48px;color:#38bdf8;margin:0 auto"></i>
        </div>
        <h3 class="text-2xl font-semibold text-white mb-4">¿Listo para Inscribirte?</h3>
        <p style="color:#cbd5e1;font-size:.95rem;margin-bottom:8px">Completa el formulario de inscripción y uno de nuestros asesores te contactará en breve para confirmar tu participación</p><a href="https://forms.gle/FORMULARIO" target="_blank" rel="noopener noreferrer" class="btn-primary w-full justify-center inline-flex mt-6 mb-4"> <i data-lucide="external-link" style="width:18px;height:18px"></i> Ir al Formulario de Inscripción </a>
@@ -983,7 +978,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
         <h3 class="text-xl font-semibold text-white mb-6">Información de Contacto</h3>
         <div class="space-y-5">
          <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(56,189,248,.15)"><i data-lucide="mail" style="width:20px;height:20px;color:#38bdf8"></i>
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(56,189,248,.15)">
+           <i data-lucide="mail" style="width:20px;height:20px;color:#38bdf8"></i>
           </div>
           <div>
            <div class="text-sm" style="color:#64748b">
@@ -995,7 +991,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
           </div>
          </div>
          <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(56,189,248,.15)"><i data-lucide="phone" style="width:20px;height:20px;color:#38bdf8"></i>
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(56,189,248,.15)">
+           <i data-lucide="phone" style="width:20px;height:20px;color:#38bdf8"></i>
           </div>
           <div>
            <div class="text-sm" style="color:#64748b">
@@ -1009,7 +1006,8 @@ input,textarea,select{font-family:'Outfit',sans-serif}
         </div>
        </div>
        <div class="card-glass p-6">
-        <div class="flex items-center gap-3 mb-3"><i data-lucide="calendar" style="width:20px;height:20px;color:#fbbf24"></i>
+        <div class="flex items-center gap-3 mb-3">
+         <i data-lucide="calendar" style="width:20px;height:20px;color:#fbbf24"></i>
          <h4 class="font-semibold text-white">Próximo Inicio</h4>
         </div>
         <p style="color:#cbd5e1;font-size:.95rem">Viernes 05 de junio de 2026 · Cupo limitado a 40 participantes</p>
@@ -1024,73 +1022,13 @@ input,textarea,select{font-family:'Outfit',sans-serif}
     </div>
    </footer>
    <script>
-// Default config
-const defaultConfig = {
+// Config for hosting
+const config = {
   diploma_title: 'Diplomado en Evaluación Psicológica Forense, con Aplicación a Diversos Contextos Jurídicos',
   diploma_subtitle: 'Desarrolla competencias especializadas en evaluación psicológica forense con aplicación directa a contextos jurídicos y legales.',
   contact_email: 'diplomado@universidad.edu.mx',
-  contact_phone: '+52 555 123 4567',
-  background_color: '#0f1729',
-  surface_color: '#f8fafc',
-  text_color: '#e2e8f0',
-  primary_action_color: '#38bdf8',
-  secondary_action_color: '#fbbf24',
-  font_family: 'Outfit',
-  font_size: 16
+  contact_phone: '+52 555 123 4567'
 };
-
-// Element SDK
-window.elementSdk.init({
-  defaultConfig,
-  async onConfigChange(config) {
-    const c = Object.assign({}, defaultConfig, config);
-    // Title
-    const heroTitle = document.getElementById('heroTitle');
-    if (heroTitle) heroTitle.textContent = c.diploma_title || defaultConfig.diploma_title;
-    // Subtitle
-    const heroSub = document.getElementById('heroSubtitle');
-    if (heroSub) heroSub.textContent = c.diploma_subtitle || defaultConfig.diploma_subtitle;
-    // Contact info
-    const infoEmail = document.getElementById('infoEmail');
-    if (infoEmail) infoEmail.textContent = c.contact_email || defaultConfig.contact_email;
-    const infoPhone = document.getElementById('infoPhone');
-    if (infoPhone) infoPhone.textContent = c.contact_phone || defaultConfig.contact_phone;
-    // Font
-    const font = c.font_family || defaultConfig.font_family;
-    document.body.style.fontFamily = `${font}, Outfit, sans-serif`;
-    // Font size
-    const base = c.font_size || defaultConfig.font_size;
-    document.body.style.fontSize = `${base}px`;
-    // Colors
-    document.querySelectorAll('.btn-primary').forEach(b => { b.style.background = `linear-gradient(135deg,${c.primary_action_color},${c.primary_action_color}dd)`; });
-    document.querySelectorAll('.accent-line').forEach(l => { l.style.background = `linear-gradient(90deg,${c.primary_action_color},${c.secondary_action_color})`; });
-    document.querySelectorAll('.module-num').forEach(n => { n.style.background = `linear-gradient(135deg,${c.primary_action_color},${c.primary_action_color}dd)`; });
-  },
-  mapToCapabilities(config) {
-    const c = Object.assign({}, defaultConfig, config);
-    function mut(key) {
-      return {
-        get: () => c[key] || defaultConfig[key],
-        set: (v) => { c[key] = v; window.elementSdk.setConfig({ [key]: v }); }
-      };
-    }
-    return {
-      recolorables: [mut('background_color'), mut('surface_color'), mut('text_color'), mut('primary_action_color'), mut('secondary_action_color')],
-      borderables: [],
-      fontEditable: mut('font_family'),
-      fontSizeable: mut('font_size')
-    };
-  },
-  mapToEditPanelValues(config) {
-    const c = Object.assign({}, defaultConfig, config);
-    return new Map([
-      ['diploma_title', c.diploma_title || defaultConfig.diploma_title],
-      ['diploma_subtitle', c.diploma_subtitle || defaultConfig.diploma_subtitle],
-      ['contact_email', c.contact_email || defaultConfig.contact_email],
-      ['contact_phone', c.contact_phone || defaultConfig.contact_phone]
-    ]);
-  }
-});
 
 // Scroll animations
 const app = document.getElementById('app');
@@ -1127,5 +1065,5 @@ function closeMobileMenu() { document.getElementById('mobileMenu').classList.rem
 lucide.createIcons();
 </script>
   </div>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ee911e1c1d43407',t:'MTc3NjU3MTkzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ee921b4836db4ec',t:'MTc3NjU3MjU4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
