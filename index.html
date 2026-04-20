@@ -831,7 +831,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
      <div class="text-center mb-16 anim-fade">
       <div class="accent-line mx-auto mb-6"></div>
       <h2 class="font-heading text-3xl sm:text-4xl mb-4" style="color:#0f1729">Valores</h2>
-      <p style="color:#64748b;max-width:600px;margin:0 auto">Opciones diseñadas para ti</p>
+      <p style="color:#64748b;max-width:600px;margin:0 auto">Opciones de inversión diseñadas para ti</p>
      </div><!-- Plan Principal -->
      <div class="max-w-4xl mx-auto mb-12 anim-scale">
       <div class="card-light p-10 border-2" style="border-color:#38bdf8">
@@ -841,50 +841,51 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          PROGRAMA COMPLETO
         </div>
        </div>
-       <div class="space-y-6">
-        <!-- Precio Base -->
-        <div class="border-b border-gray-200 pb-6">
-         <div class="text-sm font-semibold mb-3" style="color:#64748b">
-          PAGO ÚNICO
-         </div>
-         <div class="flex items-baseline gap-2 mb-2">
-          <span class="text-3xl font-bold" style="color:#0f1729">$900.004</span> <span style="color:#94a3b8;font-size:.9rem">CLP</span>
-         </div>
-         <p style="color:#64748b;font-size:.9rem;margin-top:6px">O en <strong>7 cuotas de $128.572</strong> sin interés</p>
-         <p style="color:#0ea5e9;font-size:.85rem;margin-top:6px;font-weight:500">*Matrícula solo aplica al diplomado completo</p>
-        </div><!-- Descuentos -->
-        <div class="space-y-4">
-         <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(16,185,129,.05));border:1px solid rgba(16,185,129,.2)">
-          <div class="flex items-start gap-3">
-           <div class="text-xl flex-shrink-0">
-            🏥
-           </div>
-           <div>
-            <h4 class="font-semibold text-sm mb-1" style="color:#0f1729">Miembros Comunidad Psicológica de Chile</h4>
-            <div class="text-xl font-bold mb-1" style="color:#10b981">
-             $720.006
-            </div>
-            <p style="color:#64748b;font-size:.85rem">Descuento 20% · 7 cuotas de $102.858</p>
-           </div>
+       <div class="space-y-4">
+        <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(56,189,248,.1),rgba(56,189,248,.05));border:1px solid rgba(56,189,248,.2);display:flex;flex-direction:column">
+         <div class="flex items-start gap-3 flex-grow">
+          <div class="text-xl flex-shrink-0">
+           👥
           </div>
-         </div>
-         <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(59,130,246,.05));border:1px solid rgba(59,130,246,.2)">
-          <div class="flex items-start gap-3">
-           <div class="text-xl flex-shrink-0">
-            🎓
+          <div>
+           <h4 class="font-semibold text-sm mb-1" style="color:#0f1729">Público General</h4>
+           <div class="text-xl font-bold mb-1" style="color:#38bdf8">
+            $900.004
            </div>
-           <div>
-            <h4 class="font-semibold text-sm mb-1" style="color:#0f1729">Estudiantes 5to año &amp; Egresados</h4>
-            <div class="text-xl font-bold mb-1" style="color:#3b82f6">
-             $810.005
-            </div>
-            <p style="color:#64748b;font-size:.85rem">Descuento 10% · 7 cuotas de $115.715</p>
-            <p style="color:#94a3b8;font-size:.8rem;margin-top:4px"><em>Egresados de no más de un año de titulación</em></p>
-           </div>
+           <p style="color:#64748b;font-size:.85rem">O en <strong>7 cuotas de $128.572</strong> sin interés</p>
           </div>
-         </div>
+         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('diplomado-completo', 900004)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
         </div>
-        <p style="color:#94a3b8;font-size:.85rem">* Los descuentos no son acumulables</p>
+        <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(16,185,129,.05));border:1px solid rgba(16,185,129,.2);display:flex;flex-direction:column">
+         <div class="flex items-start gap-3 flex-grow">
+          <div class="text-xl flex-shrink-0">
+           🏥
+          </div>
+          <div>
+           <h4 class="font-semibold text-sm mb-1" style="color:#0f1729">Miembros Comunidad Psicológica de Chile</h4>
+           <div class="text-xl font-bold mb-1" style="color:#10b981">
+            $720.006
+           </div>
+           <p style="color:#64748b;font-size:.85rem">Descuento 20% · 7 cuotas de $102.858</p>
+          </div>
+         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('descuento-cpch', 720006)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
+        </div>
+        <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(59,130,246,.05));border:1px solid rgba(59,130,246,.2);display:flex;flex-direction:column">
+         <div class="flex items-start gap-3 flex-grow">
+          <div class="text-xl flex-shrink-0">
+           🎓
+          </div>
+          <div>
+           <h4 class="font-semibold text-sm mb-1" style="color:#0f1729">Estudiantes 5to año &amp; Egresados</h4>
+           <div class="text-xl font-bold mb-1" style="color:#3b82f6">
+            $810.005
+           </div>
+           <p style="color:#64748b;font-size:.85rem">Descuento 10% · 7 cuotas de $115.715</p>
+           <p style="color:#94a3b8;font-size:.8rem;margin-top:4px"><em>Egresados de no más de un año de titulación</em></p>
+          </div>
+         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('descuento-estudiantes', 810005)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
+        </div>
+        <p style="color:#94a3b8;font-size:.85rem">* Los descuentos no son acumulables · *Matrícula solo aplica al diplomado completo</p>
        </div>
       </div>
      </div><!-- Módulos Independientes -->
@@ -900,7 +901,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
           $350.000
          </div>
-         <p style="color:#64748b;font-size:.85rem">¿Qué es un Informe Pericial?</p>
+         <p style="color:#64748b;font-size:.85rem">¿Qué es un Informe Pericial?</p><button class="btn-primary w-full justify-center" style="padding:8px 16px;font-size:.85rem;margin-top:8px" onclick="handlePayment('modulo-1', 350000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Pagar</button>
         </div>
         <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
          <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
@@ -909,7 +910,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
           $200.000
          </div>
-         <p style="color:#64748b;font-size:.85rem">Responsabilidad Civil</p>
+         <p style="color:#64748b;font-size:.85rem">Responsabilidad Civil</p><button class="btn-primary w-full justify-center" style="padding:8px 16px;font-size:.85rem;margin-top:8px" onclick="handlePayment('modulo-2', 200000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Pagar</button>
         </div>
         <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
          <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
@@ -918,7 +919,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
           $250.000
          </div>
-         <p style="color:#64748b;font-size:.85rem">Criminología y Riesgo</p>
+         <p style="color:#64748b;font-size:.85rem">Criminología y Riesgo</p><button class="btn-primary w-full justify-center" style="padding:8px 16px;font-size:.85rem;margin-top:8px" onclick="handlePayment('modulo-3', 250000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Pagar</button>
         </div>
         <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
          <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
@@ -927,7 +928,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
           $150.000
          </div>
-         <p style="color:#64748b;font-size:.85rem">Responsabilidad en Educación</p>
+         <p style="color:#64748b;font-size:.85rem">Responsabilidad en Educación</p><button class="btn-primary w-full justify-center" style="padding:8px 16px;font-size:.85rem;margin-top:8px" onclick="handlePayment('modulo-4', 150000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Pagar</button>
         </div>
         <div class="rounded-lg p-6 text-center" style="background:#f1f5f9;border:1px solid #e2e8f0">
          <div class="font-semibold mb-2" style="color:#0f1729;font-size:.9rem">
@@ -936,7 +937,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          <div class="text-2xl font-bold mb-1" style="color:#0ea5e9">
           $200.000
          </div>
-         <p style="color:#64748b;font-size:.85rem">Trabajo Personal del Evaluador/a</p>
+         <p style="color:#64748b;font-size:.85rem">Trabajo Personal del Evaluador/a</p><button class="btn-primary w-full justify-center" style="padding:8px 16px;font-size:.85rem;margin-top:8px" onclick="handlePayment('modulo-5', 200000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Pagar</button>
         </div>
        </div>
        <p style="color:#94a3b8;font-size:.85rem;margin-top:8px;text-center"><em>Sin matrícula al cursar módulos individuales</em></p>
@@ -944,8 +945,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
      </div><!-- Matrícula Destacada -->
      <div class="max-w-2xl mx-auto anim-scale" style="animation-delay:.2s">
       <div class="rounded-2xl p-8 border-2" style="background:linear-gradient(135deg,rgba(251,191,36,.2),rgba(251,191,36,.1));border-color:#fbbf24">
-       <div class="flex items-center gap-3 mb-4">
-        <i data-lucide="alert-circle" style="width:28px;height:28px;color:#fbbf24"></i>
+       <div class="flex items-center gap-3 mb-4"><i data-lucide="alert-circle" style="width:28px;height:28px;color:#fbbf24"></i>
         <h4 class="font-semibold text-lg" style="color:#0f1729">Matrícula del Diplomado</h4>
        </div>
        <div class="text-center">
@@ -953,11 +953,12 @@ input,textarea,select{font-family:'Outfit',sans-serif}
          $60.000
         </div>
         <p style="color:#64748b;font-size:.95rem;margin:0 0 8px 0"><strong>Solo aplica si tomas el diplomado completo</strong></p>
-        <p style="color:#94a3b8;font-size:.9rem;margin:0">No se cobra matrícula al cursar módulos por separado</p>
+        <p style="color:#94a3b8;font-size:.9rem;margin:0 0 12px 0">No se cobra matrícula al cursar módulos por separado</p><button class="btn-primary w-full justify-center" onclick="handlePayment('matrícula-diplomado', 60000)"><i data-lucide="credit-card" style="width:18px;height:18px"></i> Realizar Pago</button>
        </div>
       </div>
      </div><!-- CTA -->
-
+     <div class="text-center anim-scale mt-12" style="animation-delay:.2s"><a href="#contacto" class="btn-primary"> <i data-lucide="send" style="width:18px;height:18px"></i> Solicitar más información </a>
+     </div>
     </div>
    </section><!-- CONTACTO -->
    <section id="contacto" class="section-dark py-20 lg:py-28">
