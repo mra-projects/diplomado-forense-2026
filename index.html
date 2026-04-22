@@ -855,7 +855,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
            </div>
            <p style="color:#64748b;font-size:.85rem">Pago mediante <strong>Flow.cl</strong>, cuotas sin interés</p>
           </div>
-         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('diplomado-completo', 900004)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
+         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('diplomado-completo', 970000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
         </div>
         <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(16,185,129,.05));border:1px solid rgba(16,185,129,.2);display:flex;flex-direction:column">
          <div class="flex items-start gap-3 flex-grow">
@@ -869,7 +869,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
            </div>
            <p style="color:#64748b;font-size:.85rem">Pago mediante <strong>Flow.cl</strong>, cuotas sin interés</p>
           </div>
-         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('descuento-cpch', 720006)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
+         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('descuento-cpch', 776000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
         </div>
         <div class="rounded-lg p-4" style="background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(59,130,246,.05));border:1px solid rgba(59,130,246,.2);display:flex;flex-direction:column">
          <div class="flex items-start gap-3 flex-grow">
@@ -884,7 +884,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
            <p style="color:#64748b;font-size:.85rem">Pago mediante <strong>Flow.cl</strong>, cuotas sin interés</p>
            <p style="color:#94a3b8;font-size:.8rem;margin-top:4px"><em>Egresados de no más de un año de titulación</em></p>
           </div>
-         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('descuento-estudiantes', 810005)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
+         </div><button class="btn-primary w-full justify-center mt-4" style="padding:12px 24px;font-size:.9rem" onclick="handlePayment('descuento-estudiantes', 873000)"><i data-lucide="credit-card" style="width:16px;height:16px"></i> Realizar Pago</button>
         </div>
         <p style="color:#94a3b8;font-size:.85rem">* Los descuentos no son acumulables · *Matrícula solo aplica al diplomado completo</p>
        </div>
@@ -958,7 +958,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
        </div>
       </div>
      </div><!-- CTA -->
-     <div class="text-center anim-scale mt-12" style="animation-delay:.2s"><a href="#contacto" class="btn-primary"> <i data-lucide="send" style="width:18px;height:18px"></i> Solicitar más información </a>
+     <div class="text-center anim-scale mt-12" style="animation-delay:.2s"><a href="#contacto" class="btn-primary"> <i data-lucide="send" style="width:18px;height:18px"></i> Completa el Formulario de Inscripción </a>
      </div>
     </div>
    </section><!-- CONTACTO -->
@@ -1004,7 +1004,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
             Teléfono
            </div>
            <div id="infoPhone" class="text-white font-medium">
-            +56 555 123 4567
+            +56 
            </div>
           </div>
          </div>
@@ -1073,7 +1073,7 @@ function handlePayment(packageType, amount) {
   //showPaymentNotification(packageType, amount);
 }
 
-function showPaymentNotification(packageType, amount) {
+function showPaymentNotification(packageType, amount, paymentLink) {
   const notification = document.createElement('div');
   notification.style.cssText = `
     position: fixed;
