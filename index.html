@@ -742,6 +742,7 @@ input,textarea,select{font-family:'Outfit',sans-serif}
         <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Cédula de Identidad</span></li>
         <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Certificado de Antecedentes</span></li>
         <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Certificado que no lo inhabilita de trabajar con NNA, por haber sido condenado por delitos sexuales</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" style="width:18px;height:18px;color:#38bdf8;flex-shrink:0;margin-top:2px"></i><span style="color:#cbd5e1;font-size:.95rem">Certificado que acredita membresía en la Comunidad Psicológica de Chile</span></li>
        </ul>
       </div><!-- Diploma -->
       <div class="card-glass p-8 anim-right">
@@ -1065,11 +1066,11 @@ function handlePayment(packageType, amount) {
   };
   
   const paymentLink = paymentLinks[packageType];
-  if (paymentLink) {
-    window.open(paymentLink, '_blank');
-  }
-  
-  showPaymentNotification(packageType, amount);
+  //if (paymentLink) {
+  //  window.open(paymentLink, '_blank');
+  //}
+  showPaymentNotification(packageType, amount, paymentLink);
+  //showPaymentNotification(packageType, amount);
 }
 
 function showPaymentNotification(packageType, amount) {
@@ -1126,9 +1127,19 @@ function showPaymentNotification(packageType, amount) {
   document.head.appendChild(style);
   document.body.appendChild(notification);
   
-  setTimeout(() => {
+  //setTimeout(() => {
+  //  notification.style.animation = 'slideOut 0.4s ease forwards';
+  //  setTimeout(() => notification.remove(), 400);
+  //}, 4000);
+
+ setTimeout(() => {
     notification.style.animation = 'slideOut 0.4s ease forwards';
-    setTimeout(() => notification.remove(), 400);
+    setTimeout(() => {
+      notification.remove();
+      if (paymentLink) {
+        window.open(paymentLink, '_blank');
+      }
+    }, 400);
   }, 4000);
 }
 
