@@ -1054,15 +1054,15 @@ setTimeout(checkAnims, 100);
 function handlePayment(packageType, amount) {
   // Payment links mapping
   const paymentLinks = {
-    'diplomado-completo': 'https://www.flow.cl/btn.php?token=sbf2c3728ee70ac34f1df7740ee0fc724aff3481',
-    'descuento-cpch': 'https://www.flow.cl/btn.php?token=j94b4d12de290032905bc2e190058f4a59929da1',
-    'descuento-estudiantes': 'https://www.flow.cl/btn.php?token=ab5a2d8bfd30305806d7469ac423af36746114ff',
-    'modulo-1': 'https://www.flow.cl/btn.php?token=i78088f187cf422a65d8884943cbffffd6cc0762',
-    'modulo-2': 'https://www.flow.cl/btn.php?token=kef5b269b90b8230021033f64bc6f9499f000d36',
-    'modulo-3': 'https://www.flow.cl/btn.php?token=kd18178cb01b290451e3c8d39496fa40588f5606',
-    'modulo-4': 'https://www.flow.cl/btn.php?token=h6ad7b3ee2f2f6d7c237e04e3822819fca52444c',
-    'modulo-5': 'https://www.flow.cl/btn.php?token=zc22e50155062fc9c9a3a57380ce7ecd89f550b8',
-    'matrícula-diplomado': 'https://www.flow.cl/btn.php?token=r95a038f596b568c3d625fa73a5a33704d8cd479'
+    'Publico-general:': 'https://www.flow.cl/btn.php?token=sbf2c3728ee70ac34f1df7740ee0fc724aff3481',
+    'Miembros-CPCH:': 'https://www.flow.cl/btn.php?token=j94b4d12de290032905bc2e190058f4a59929da1',
+    'Estudiantes-egresados:': 'https://www.flow.cl/btn.php?token=ab5a2d8bfd30305806d7469ac423af36746114ff',
+    'Modulo-1': 'https://www.flow.cl/btn.php?token=i78088f187cf422a65d8884943cbffffd6cc0762',
+    'Modulo-2': 'https://www.flow.cl/btn.php?token=kef5b269b90b8230021033f64bc6f9499f000d36',
+    'Modulo-3': 'https://www.flow.cl/btn.php?token=kd18178cb01b290451e3c8d39496fa40588f5606',
+    'Modulo-4': 'https://www.flow.cl/btn.php?token=h6ad7b3ee2f2f6d7c237e04e3822819fca52444c',
+    'Modulo-5': 'https://www.flow.cl/btn.php?token=zc22e50155062fc9c9a3a57380ce7ecd89f550b8',
+    'Matrícula-diplomado': 'https://www.flow.cl/btn.php?token=r95a038f596b568c3d625fa73a5a33704d8cd479'
   };
   
   const paymentLink = paymentLinks[packageType];
@@ -1097,6 +1097,7 @@ function showPaymentNotification(packageType, amount, paymentLink) {
         <div style="font-weight: 600; margin-bottom: 4px;">Procesando pago</div>
         <div style="font-size: 0.9rem; opacity: 0.95;">${packageType} - $${amount.toLocaleString()} CLP</div>
         <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 6px;">Te redireccionará a la pasarela de pago</div>
+        <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 6px;"><<Activa Ventanas Emergentes>></div>
       </div>
     </div>
   `;
